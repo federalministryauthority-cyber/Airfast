@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+
+  body {
+    @apply bg-navy text-white font-sans antialiased;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.2;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-navy;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-navy shadow-gold transition duration-300 hover:-translate-y-0.5 hover:bg-gold-light disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold;
+  }
+
+  .field-input {
+    @apply w-full rounded-xl border border-white/15 bg-navy-800/80 px-4 py-3 text-sm text-white placeholder:text-mist/60 transition focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30;
+  }
+
+  .field-label {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-wider text-mist;
+  }
+
+  .icon-action {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-mist transition hover:border-gold hover:text-gold;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-white/10 bg-charcoal-card/60 shadow-premium backdrop-blur;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-right {
+  animation: slide-right 55s linear infinite;
+}
+
+.slideshow-track:hover .animate-slide-right {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-right {
+    animation: none;
+  }
+}
